@@ -4,32 +4,32 @@ resource "aws_iam_role" "iam_for_lambda" {
   inline_policy {
     name = "root"
 
-    policy= jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
+    policy = jsonencode({
+      "Version" : "2012-10-17",
+      "Statement" : [
         {
-            "Action": [
-                "logs:CreateLogGroup",
-                "logs:CreateLogStream",
-                "logs:PutLogEvents"
-            ],
-            "Resource": "arn:aws:logs:*:*:*",
-            "Effect": "Allow"
+          "Action" : [
+            "logs:CreateLogGroup",
+            "logs:CreateLogStream",
+            "logs:PutLogEvents"
+          ],
+          "Resource" : "arn:aws:logs:*:*:*",
+          "Effect" : "Allow"
         },
         {
-            "Action": [
-                "ses:*",
-                "states:*",
-                "sns:*"
-            ],
-            "Resource": "*",
-            "Effect": "Allow"
+          "Action" : [
+            "ses:*",
+            "states:*",
+            "sns:*"
+          ],
+          "Resource" : "*",
+          "Effect" : "Allow"
         }
-    ]
+      ]
     })
   }
 
-    assume_role_policy = <<EOF
+  assume_role_policy = <<EOF
 {
           "Version": "2012-10-17",
           "Statement": [

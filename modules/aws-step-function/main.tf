@@ -9,7 +9,7 @@ resource "aws_sfn_state_machine" "sfn_state_machine" {
 }
 
 data "template_file" "sfn-definition" {
-  template = "${file("${path.module}/step_function_template.json")}"
+  template = file("${path.module}/step_function_template.json")
   vars = {
     email_reminder_arn = var.email_lambda_arn
     text_reminder_arn  = var.sms_lambda_arn
