@@ -10,7 +10,7 @@ resource "aws_lambda_function" "email_lambda" {
 data "archive_file" "email_lambda_zip" {
   type        = "zip"
   source_file = "${path.module}/lambda_code_source/email_reminder.py"
-  output_path = "${path.module}/email_lambda_function.zip"
+  output_path = "email_lambda_function.zip"
 }
 
 resource "aws_lambda_function" "sms_lambda" {
@@ -25,7 +25,7 @@ resource "aws_lambda_function" "sms_lambda" {
 data "archive_file" "sms_lambda_zip" {
   type        = "zip"
   source_file = "${path.module}/lambda_code_source/sms_reminder.py"
-  output_path = "${path.module}/sms_lambda_function.zip"
+  output_path = "sms_lambda_function.zip"
 }
 
 resource "aws_lambda_function" "api_handler_lambda" {
@@ -40,7 +40,7 @@ resource "aws_lambda_function" "api_handler_lambda" {
 data "archive_file" "api_handler_lambda_zip" {
   type        = "zip"
   source_file = "${path.module}/lambda_code_source/api_handler.py"
-  output_path = "${path.module}/api_handler_lambda_function.zip"
+  output_path = "api_handler_lambda_function.zip"
 }
 
  
